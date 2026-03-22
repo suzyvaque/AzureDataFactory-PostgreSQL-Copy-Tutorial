@@ -87,10 +87,10 @@ Connect to server by choosing `Existing Server` and typing in the password we ju
 
 ### Set up database
 
-In pgAdmin's query tool, create new user
+In pgAdmin's query tool, create new user with your user name.
 
 ```SQL
-CREATE ROLE {username} WITH
+CREATE ROLE suzyvaque WITH
 LOGIN
 PASSWORD '{password}';
 ```
@@ -99,14 +99,55 @@ Then create a new database
 
 ```SQL
 CREATE DATABASE pg_adf_connect_db
-OWNER {username};
+OWNER suzyvaque;
 ```
+
+### Create schema
+
+Click default workspace, choose this new database, right click and select Query Tool.
+
+```SQL
+CREATE SCHEMA demo AUTHORIZATION suzyvaque;
+```
+
+### Create tables
+
+We will create these tables:
 
 * customers (~50K rows)
 * accounts (~100K rows)
 * transactions (~300K rows) ← main fact table
 * cards (~100K rows)
 * branches (~100 rows)
+
+Run SQL queries in Queries folder:
+
+1. Run DDL.sql
+2. Run customers.sql
+3. Run accounts.sql
+4. Run transactions.sql
+5. Run cards.sql
+6. Run branches.sql
+7. Check tables
+
+    ```SQL
+    SELECT 'customers' AS table_name, COUNT(*) FROM demo.customers
+    UNION ALL
+    SELECT 'accounts', COUNT(*) FROM demo.accounts
+    UNION ALL
+    SELECT 'transactions', COUNT(*) FROM demo.transactions
+    UNION ALL
+    SELECT 'cards', COUNT(*) FROM demo.cards
+    UNION ALL
+    SELECT 'branches', COUNT(*) FROM demo.branches;
+    ```
+
+    Expected:
+    * customers → 50000
+    * accounts → 100000
+    * transactions → 300000
+    * cards → 100000
+    * branches → 100
 
 ## 2️⃣ Install SHIR
 
