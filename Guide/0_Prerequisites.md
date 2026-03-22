@@ -1,4 +1,4 @@
-# 0️⃣ Prerequisites
+# Prerequisites
 
 ## Azure Virtual Machine
 

@@ -1,6 +1,6 @@
-# 1️⃣ Create Data
+# Create Data
 
-## Connect to server in Powershell
+## 1️⃣ Connect to server in Powershell
 
 Run on VM Powershell
 
@@ -37,7 +37,7 @@ psql -U postgres -h localhost -p 5432
 
 <br>
 
-## Connect to server in pgAdmin
+## 2️⃣ Connect to server in pgAdmin
 
 Open installed **pgAdmin**.
 
@@ -48,7 +48,7 @@ Connect to server by choosing `Existing Server` and typing in the password we ju
 
 <br>
 
-## Set up database
+## 3️⃣ Set up database
 
 In pgAdmin's query tool, create new user with your user name.
 
@@ -67,7 +67,7 @@ OWNER suzyvaque;
 
 <br>
 
-## Create schema
+## 4️⃣ Create schema
 
 Click default workspace, choose this new database, right click and select Query Tool.
 
@@ -77,7 +77,7 @@ CREATE SCHEMA demo AUTHORIZATION suzyvaque;
 
 <br>
 
-## Create tables
+## 5️⃣ Create tables
 
 We will create these tables:
 
@@ -100,7 +100,7 @@ Run SQL queries in Queries folder:
 
 <br>
 
-## Inspect data
+## 6️⃣ Inspect data
 
 ### Check number of rows created
 
