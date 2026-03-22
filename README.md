@@ -31,13 +31,32 @@ psql --version
 $env:Path += ";C:\Program Files\PostgreSQL\16\bin"
 ```
 
-Try connecting to PostgreSQL Server
+### pgAdmin
+
+Run on VM Powershell
+
+```powershell
+winget search pgadmin
+winget install --id PostgreSQL.pgAdmin -e
+```
+
+### Azure Data Factory Resource
+
+### Azure Storage Account Resource
+
+* ADLS Gen2
+
+## 1️⃣ Create Data
+
+### Connect to server in Powershell
+
+Run on VM Powershell
 
 ```powershell
 psql -U postgres -h localhost -p 5432
 ```
 
-* If password is required but you did not yet set it up, go to `C:\Program Files\PostgreSQL\16\data` and open `pg_hba.conf`
+* **If password is required but you did not yet set it up**, go to `C:\Program Files\PostgreSQL\16\data` and open `pg_hba.conf`
 * Update IPv4 `127.0.0.1/32`, IPv6 `::1/128` local connections from `scram-sha-256` to `trust`
 
 ```powershell
@@ -57,27 +76,31 @@ psql -U postgres -h localhost -p 5432
 # Now we can connect with new password
 ```
 
-### PGAdmin
+### Connect to server in pgAdmin
 
-Run on VM Powershell
-
-```powershell
-winget search pgadmin
-winget install --id PostgreSQL.pgAdmin -e
-```
+Open installed **pgAdmin**.
 
 Connect to server by choosing `Existing Server` and typing in the password we just set above.
 
 * User `postgres` is default admin user
 * Connect with admin password- admin's password is identical to server password
 
-### Azure Data Factory Resource
+### Set up database
 
-### Azure Storage Account Resource
+In pgAdmin's query tool, create new user
 
-* ADLS Gen2
+```SQL
+CREATE ROLE {username} WITH
+LOGIN
+PASSWORD '{password}';
+```
 
-## 1️⃣ Create Data
+Then create a new database
+
+```SQL
+CREATE DATABASE pg_adf_connect_db
+OWNER {username};
+```
 
 * customers (~50K rows)
 * accounts (~100K rows)
