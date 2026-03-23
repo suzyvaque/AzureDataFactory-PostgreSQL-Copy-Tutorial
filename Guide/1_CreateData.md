@@ -102,12 +102,12 @@ We will create these tables:
 
 Run SQL queries in Query Tool:
 
-1. [DDL.sql](./PostgreSQL/Queries/DDL.sql)
-2. [customers.sql](./PostgreSQL/Queries/customers.sql)
-3. [accounts.sql](./PostgreSQL/Queries/accounts.sql)
-4. [transactions.sql](./PostgreSQL/Queries/transactions.sql)
-5. [cards.sql](./PostgreSQL/Queries/cards.sql)
-6. [branches.sql](./PostgreSQL/Queries/branches.sql)
+1. [DDL.sql](../Queries/CreateData/DDL.sql)
+2. [customers.sql](../Queries/CreateData/customers.sql)
+3. [accounts.sql](../Queries/CreateData/accounts.sql)
+4. [transactions.sql](../Queries/CreateData/transactions.sql)
+5. [cards.sql](../Queries/CreateData/cards.sql)
+6. [branches.sql](../Queries/CreateData/branches.sql)
 
 <br>
 
