@@ -1,10 +1,10 @@
-# Prerequisites
+# 0. Prerequisites
 
 ## Azure Virtual Machine
 
 Windows OS (Required for SHIR installation)
 
-Connect with Bastion (Run on local Powershell)
+Connect with Bastion (Run on local Powershell):
 
 ```powershell
 az login
@@ -19,7 +19,7 @@ az network bastion rdp --name "{vm-bastion-name}" --resource-group "{vm-resource
 
 ## PostgreSQL 16 Server
 
-Run on VM Powershell
+Run on VM Powershell:
 
 ```powershell
 winget search postgresql
@@ -35,7 +35,7 @@ $env:Path += ";C:\Program Files\PostgreSQL\16\bin"
 
 ## pgAdmin
 
-Run on VM Powershell
+Run on VM Powershell:
 
 ```powershell
 winget search pgadmin
@@ -48,4 +48,13 @@ winget install --id PostgreSQL.pgAdmin -e
 
 ## Azure Storage Account Resource
 
-* ADLS Gen2
+Create Azure Storage Account resource with the following configuration enabled.
+
+* blob anonymous access
+* storage account key access
+* public network access
+* hierarchical namespace (ADLS Gen2)
+
+These options are enabled for this public demo test only. *(SecurityControl=Ignore if needed)*
+
+For production environments private connection is recommended.

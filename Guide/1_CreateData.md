@@ -1,8 +1,8 @@
-# Create Data
+# 1. Create Data
 
 ## 1️⃣ Connect to server in Powershell
 
-Run on VM Powershell
+Run on VM Powershell:
 
 ```powershell
 psql -U postgres -h localhost -p 5432
@@ -14,9 +14,14 @@ psql -U postgres -h localhost -p 5432
 
 **If password is required but you did not yet set it up:**
 
-Go to `C:\Program Files\PostgreSQL\16\data` and open `pg_hba.conf`
+Go to `C:\Program Files\PostgreSQL\16\data` and open `pg_hba.conf`.
 
-Update IPv4 `127.0.0.1/32`, IPv6 `::1/128` local connections from `scram-sha-256` to `trust`
+Update IPv4 `127.0.0.1/32`, IPv6 `::1/128` local connections from `scram-sha-256` to `trust`.
+
+<br>
+
+
+Then run on VM Powershell:
 
 ```powershell
 Restart-Service *postgres*
@@ -26,7 +31,11 @@ psql -U postgres -h localhost -p 5432
 ALTER USER postgres WITH PASSWORD '{your new password}';
 ```
 
-Update `pg_hba.conf`'s `trust` back to `scram-sha-256`
+<br>
+
+Update `pg_hba.conf`'s `trust` back to `scram-sha-256`.
+
+Then run on VM Powershell:
 
 ```powershell
 Restart-Service *postgres*
@@ -50,7 +59,7 @@ Connect to server by choosing `Existing Server` and typing in the password we ju
 
 ## 3️⃣ Set up database
 
-In pgAdmin's query tool, create new user with your user name.
+In pgAdmin's query tool, create new user with your user name:
 
 ```SQL
 CREATE ROLE suzyvaque WITH
@@ -58,7 +67,7 @@ LOGIN
 PASSWORD '{password}';
 ```
 
-Then create a new database
+Then create a new database:
 
 ```SQL
 CREATE DATABASE pg_adf_connect_db
@@ -70,6 +79,8 @@ OWNER suzyvaque;
 ## 4️⃣ Create schema
 
 Click default workspace, choose this new database, right click and select Query Tool.
+
+Run DDL in Query Tool:
 
 ```SQL
 CREATE SCHEMA demo AUTHORIZATION suzyvaque;
@@ -89,7 +100,7 @@ We will create these tables:
 
 <br>
 
-Run SQL queries in Queries folder:
+Run SQL queries in Query Tool:
 
 1. [DDL.sql](./PostgreSQL/Queries/DDL.sql)
 2. [customers.sql](./PostgreSQL/Queries/customers.sql)
